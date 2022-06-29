@@ -21,7 +21,7 @@ const DataTable = ({columns}) => {
 
     }
   }
-
+console.log(data);
     const actionColumn = [
         {
             field: "action", headerName: "Action", width: 200, renderCell: (params) => {
@@ -37,8 +37,8 @@ const DataTable = ({columns}) => {
   return (
     <div className="datatable">
        <div className="datatableTitle">
-        Add New User
-        <Link to="/users/new" style={{textDecoration: "none"}} className="link">
+         {path}
+        <Link to={`/${path}/new`} style={{textDecoration: "none"}} className="link">
           Add New
         </Link> 
        </div>

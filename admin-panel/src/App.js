@@ -3,13 +3,15 @@ import Home from "./pages/Home";
 import List from "./pages/List";
 import Login from "./pages/Login";
 import Single from "./pages/Single";
+import NewRoom from "./pages/NewRoom"
 import New from "./pages/New";
 import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
 import { DarkModeContext } from "./context/darkModeContext";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
-import { hotelColumns, userColumns } from "./datatable";
+import { hotelColumns, roomColumns, userColumns } from "./datatable";
+import NewHotel from "./pages/NewHotel";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
@@ -82,7 +84,34 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <New inputs={productInputs} title="Add new product" />
+                    <NewHotel   />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+
+            <Route path="rooms">
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <List columns={roomColumns} />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":productId"
+                element={
+                  <ProtectedRoute>
+                    <Single />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <ProtectedRoute>
+                    <NewRoom   />
                   </ProtectedRoute>
                 }
               />
